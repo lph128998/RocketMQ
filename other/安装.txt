@@ -1,0 +1,27 @@
+download & build
+1. 下载rocketMQ,解压
+2. 执行命令sh install.sh编译
+
+解压
+> tar -zcvf /Users/liupeihua/Documents/RocketMQ-3.5.8/target/alibaba-rocketmq-broker.tar.gz ./
+配置环境变量/etc/profile
+
+#maven
+MAVEN_HOME=/Users/liupeihua/Documents/apache-maven-3.3.9
+export MAVEN_HOME
+export PATH=$PATH:$MAVEN_HOME/bin
+
+#java
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home 
+export JAVA_HOME
+export PATH=$PATH:$JAVA_HOME/bin
+
+#classpath
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+#rocketmq_home
+export ROCKETMQ_HOME=/Users/liupeihua/Documents/RocketMQ-3.5.8/target/alibaba-rocketmq-broker/alibaba-rocketmq
+
+#namesrv_addr
+export NAMESRV_ADDR=localhost:9876
+

@@ -1,0 +1,39 @@
+配置环境变量/etc/profile
+
+export ROCKETMQ_HOME=/Users/liupeihua/Documents/student/RocketMQ/rocketmq/distribution
+export NAMESRV_ADDR=localhost:9876
+启动 Name Server
+
+> nohup sh $ROCKETMQ_HOME/bin/mqnamesrv &
+
+//执行 jps 查看进程
+> jps
+25913 NamesrvStartup
+//查看日志确保服务已正常启动
+> tail -f nohup.out
+
+启动 broker
+> nohup sh $ROCKETMQ_HOME/bin/mqbroker -n localhost:9876 autoCreateTopicEnable=true &
+//执行 jps 查看进程
+> jps
+25954 BrokerStartup
+//查看日志确保服务已正常启动
+> tail -f nohup.out
+
+关闭服务
+// 关闭broker
+> sh $ROCKETMQ_HOME/bin/mqshutdown broker
+The mqbroker(25117) is running...
+Send shutdown request to mqbroker(25117) OK
+// 关闭namesrv
+> sh $ROCKETMQ_HOME/bin/mqshutdown namesrv
+The mqnamesrv(24809) is running...
+Send shutdown request to mqnamesrv(24809) OK
+
+发送和接受消息
+// 发送
+> sh $ROCKETMQ_HOME/bin/tools.sh com.alibaba.rocketmq.example.quickstart.Producer
+> 接受
+> sh $ROCKETMQ_HOME/bin/tools.sh com.alibaba.rocketmq.example.quickstart.Consumer
+
+
